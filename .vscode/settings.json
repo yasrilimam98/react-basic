@@ -18,5 +18,8 @@
     "titleBar.inactiveBackground": "#9C27B099",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
   "peacock.color": "#9C27B0"
 }
