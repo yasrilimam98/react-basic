@@ -1,5 +1,7 @@
 import { useState } from "react";
+import Tabel from "./Tabel";
 function Menu() {
+  const title = "Daftar Menu";
   const [menus, setMenu] = useState([
     {
       idmenu: 1,
@@ -33,16 +35,12 @@ function Menu() {
 
   return (
     <div className="App">
-      <h1>Menu List</h1>
-      <div>
-        {menus.map((data) => (
-          <li key={data.idmenu}>
-            {data.nama} - Rp {data.harga}
-          </li>
-        ))}
-      </div>
+      {/* kirim menus ke tabel.js */}
+      <Tabel menu={menus} title={title} />
     </div>
   );
 }
 
 export default Menu;
+
+// lebih baik memisahkan data dan template agar bisa di pakai berulang kali
