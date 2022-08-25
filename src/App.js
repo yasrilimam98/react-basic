@@ -6,6 +6,7 @@ import Sejarah from "./pages/Sejarah";
 import Tentang from "./pages/Tentang";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Siswa from "./pages/Siswa";
+import Menu from "./pages/Menu";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/sejarah" component={Sejarah} />
           <Route path="/tentang" component={Tentang} />
           <Route path="/siswa" component={Siswa} />
+          <Route path="/menu" component={Menu} />
         </Switch>
       </div>
     </BrowserRouter>
