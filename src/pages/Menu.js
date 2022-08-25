@@ -12,7 +12,7 @@ function Menu() {
     },
     {
       idmenu: 2,
-      idkategori: 1,
+      idkategori: 2,
       nama: "Nasi Padang",
       harga: 15000,
       gambar: "naspadang.jpg",
@@ -26,7 +26,7 @@ function Menu() {
     },
     {
       idmenu: 4,
-      idkategori: 2,
+      idkategori: 4,
       nama: "Sate",
       harga: 15000,
       gambar: "sate.jpg",
@@ -37,6 +37,11 @@ function Menu() {
     <div className="App">
       {/* kirim menus ke tabel.js */}
       <Tabel menu={menus} title={title} />
+      {/* filter by idkategori */}
+      <Tabel
+        menu={menus.filter((data) => data.idkategori === 4)}
+        title="MENU BERAT"
+      />
     </div>
   );
 }
