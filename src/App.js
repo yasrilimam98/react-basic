@@ -5,6 +5,7 @@ import Nav from "./pages/Nav";
 import Sejarah from "./pages/Sejarah";
 import Tentang from "./pages/Tentang";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Siswa from "./pages/Siswa";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/kontak" component={Kontak} />
           <Route path="/sejarah" component={Sejarah} />
           <Route path="/tentang" component={Tentang} />
+          <Route path="/siswa" component={Siswa} />
         </Switch>
       </div>
     </BrowserRouter>

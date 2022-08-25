@@ -16,6 +16,9 @@ function Nav() {
         <Link to="/kontak">
           <li>Kontak</li>
         </Link>
+        <Link to="/siswa">
+          <li>Siswa</li>
+        </Link>
       </ul>
     </div>
   );
