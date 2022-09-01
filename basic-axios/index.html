@@ -57,9 +57,10 @@
       });
 
       function get() {
-        link.get("pelanggan").then(res => {
+        link.get("pelanggan").then((res) => {
+          let datas = res.data["data"];
           let out = "";
-          res.data.data.forEach((item) => {
+          datas.forEach((item) => {
             out += `
             <div class="card mt-3">
               <div class="card-body">
@@ -73,7 +74,29 @@
           document.getElementById("out").innerHTML = out;
         });
       }
+
+      function show() {
+        let id = 1;
+        link.get("pelanggan/" + id).then((res) => {
+          let data = res.data["data"];
+          let out = "";
+          data.forEach((item) => {
+            out += `
+            <div class="card mt-3">
+              <div class="card-body">
+                <h5 class="card-title">${item.pelanggan}</h5>
+                <p class="card-text">${item.alamat}</p>
+                <p class="card-text">${item.telp}</p>
+              </div>
+            </div>
+            `;
+          });
+          document.getElementById("out").innerHTML = out;
+        });
+      }
+
       document.querySelector("#get").addEventListener("click", get);
+      document.querySelector("#show").addEventListener("click", show);
     </script>
   </body>
 </html>
