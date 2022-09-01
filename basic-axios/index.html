@@ -4,26 +4,76 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar Axios</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <title>Belajar Axios</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
+    <div class="container">
+      <div class="row mt-4">
+        <div>
+          <h1 class="display-4">Belajar Axios</h1>
+        </div>
+        <div class="mt-3">
+          <button type="button" class="btn btn-primary" id="get">GET</button>
+          <button type="button" class="btn btn-secondary" id="show">
+            SHOW
+          </button>
+          <button type="button" class="btn btn-success" id="post">POST</button>
+          <button type="button" class="btn btn-danger" id="del">DELETE</button>
+          <button type="button" class="btn btn-warning" id="updated">
+            UPDATED
+          </button>
+        </div>
+        <hr class="mt-4" />
+      </div>
+      <div class="row">
+        <div id="out"></div>
+      </div>
+    </div>
+
     <script>
-      let API_URL = "http://127.0.0.1:8000/api/";
-      const token = "";
-      axios({
-        method: "GET",
-        url: API_URL + "kategori",
-        headers: {
-          api_token: token,
-        },
-      }).then((res) => console.log(res));
+      const API_URL = "http://127.0.0.1:8000/api/";
+      let token =
+        "pSUFk3zxGRnygOU6T8vm30FaKEXqL5R1aoA70ZUZVLGP6BxYT4JqzkLhX6Qu";
+      // axios({
+      //   method: "GET",
+      //   url: API_URL + "kategori",
+      //   headers: {
+      //     api_token: token,
+      //   },
+      // }).then((res) => console.log(res));
+
+      const link = axios.create({
+        baseURL: API_URL,
+        // headers: {
+        //   api_token: token,
+        // },
+      });
+
+      function get() {
+        link.get("pelanggan").then(res => {
+          let out = "";
+          res.data.data.forEach((item) => {
+            out += `
+            <div class="card mt-3">
+              <div class="card-body">
+                <h5 class="card-title">${item.pelanggan}</h5>
+                <p class="card-text">${item.alamat}</p>
+                <p class="card-text">${item.telp}</p>
+              </div>
+            </div>
+            `;
+          });
+          document.getElementById("out").innerHTML = out;
+        });
+      }
+      document.querySelector("#get").addEventListener("click", get);
     </script>
   </body>
 </html>
