@@ -40,7 +40,7 @@
     <script>
       const API_URL = "http://127.0.0.1:8000/api/";
       let token =
-        "pSUFk3zxGRnygOU6T8vm30FaKEXqL5R1aoA70ZUZVLGP6BxYT4JqzkLhX6Qu";
+        "EmonzPguYxybcpGr7pTVDcHOvWu1rOl5BHcd2BDP3XQ7v3Z2r9z99mqtAQ3P";
       // axios({
       //   method: "GET",
       //   url: API_URL + "kategori",
@@ -51,9 +51,6 @@
 
       const link = axios.create({
         baseURL: API_URL,
-        // headers: {
-        //   api_token: token,
-        // },
       });
 
       function get() {
@@ -95,8 +92,20 @@
         });
       }
 
+      function post() {
+        let data = {
+          pelanggan: "Bambang",
+          alamat: "Jl. Kebon Kacang",
+          telp: "08123456789",
+        };
+        link.post("pelanggan", data).then((res) => {
+          console.log(res);
+        });
+      }
+
       document.querySelector("#get").addEventListener("click", get);
       document.querySelector("#show").addEventListener("click", show);
+      document.querySelector("#post").addEventListener("click", post);
     </script>
   </body>
 </html>
