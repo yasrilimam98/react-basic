@@ -25,8 +25,8 @@
             SHOW
           </button>
           <button type="button" class="btn btn-success" id="post">POST</button>
-          <button type="button" class="btn btn-danger" id="del">DELETE</button>
-          <button type="button" class="btn btn-warning" id="updated">
+          <button type="button" class="btn btn-danger" id="hapus">DELETE</button>
+          <button type="button" class="btn btn-warning" id="update">
             UPDATED
           </button>
         </div>
@@ -39,14 +39,13 @@
 
     <script>
       const API_URL = "http://127.0.0.1:8000/api/";
-      let token =
-        "EmonzPguYxybcpGr7pTVDcHOvWu1rOl5BHcd2BDP3XQ7v3Z2r9z99mqtAQ3P";
+      // let token ="EmonzPguYxybcpGr7pTVDcHOvWu1rOl5BHcd2BDP3XQ7v3Z2r9z99mqtAQ3P";
       // axios({
       //   method: "GET",
       //   url: API_URL + "kategori",
-      //   headers: {
-      //     api_token: token,
-      //   },
+      //   // headers: {
+      //   //   api_token: token,
+      //   // },
       // }).then((res) => console.log(res));
 
       const link = axios.create({
@@ -64,6 +63,7 @@
                 <h5 class="card-title">${item.pelanggan}</h5>
                 <p class="card-text">${item.alamat}</p>
                 <p class="card-text">${item.telp}</p>
+                <p class="card-text">${item.idpelanggan}</p>
               </div>
             </div>
             `;
@@ -76,6 +76,7 @@
         let id = 1;
         link.get("pelanggan/" + id).then((res) => {
           let data = res.data["data"];
+          console.log(data);
           let out = "";
           data.forEach((item) => {
             out += `
@@ -84,6 +85,7 @@
                 <h5 class="card-title">${item.pelanggan}</h5>
                 <p class="card-text">${item.alamat}</p>
                 <p class="card-text">${item.telp}</p>
+                <p class="card-text">${item.idpelanggan}</p>
               </div>
             </div>
             `;
@@ -103,9 +105,17 @@
         });
       }
 
+      function hapus(){
+        let id = 2;
+        link.delete("pelanggan/"+id).then((res)=>{
+          console.log(res);
+        })
+      }
+
       document.querySelector("#get").addEventListener("click", get);
       document.querySelector("#show").addEventListener("click", show);
       document.querySelector("#post").addEventListener("click", post);
+      document.querySelector("#hapus").addEventListener("click", hapus);
     </script>
   </body>
 </html>
